@@ -16,6 +16,7 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var review = Review?()
+    var seriesId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,24 +40,29 @@ class ReviewViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if saveButton === sender {
-            review = Review(objectId: "", comment: comment.text, author: "anonymous")
+            save(sender as! UIBarButtonItem)
+            
         }
     }
     
     @IBAction func save(sender: UIBarButtonItem) {
-        let review = PFObject(className: "Review")
-        review["comment"] = comment.text
-        review["author"] = "anonymous"
-        review.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+        let _review = PFObject(className: "Review")
+        _review["seriesId"] = seriesId
+        _review["comment"] = comment.text
+        _review["author"] = "anonymous"
+        _review.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
             var alert: UIAlertView
             if (success) {
                 let message = "Object has been saved."
+                self.review = Review(seriesId: self.seriesId!, objectId: _review.objectId!, comment: self.comment.text, author: "anonymous")
                 alert = UIAlertView(title: "Success", message: message, delegate: self, cancelButtonTitle: "Close")
             } else {
                 alert = UIAlertView(title: "Error", message: error?.description, delegate: self, cancelButtonTitle: "Close")
             }
             alert.show()
         })
+        
+        
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {

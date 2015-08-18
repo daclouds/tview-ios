@@ -221,15 +221,27 @@ class RankTableViewController: UITableViewController, UISearchControllerDelegate
         return (!urlVars.isEmpty ? "?" : "") + "&".join(urlVars)
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let reviewTableViewController = segue.destinationViewController as! ReviewTableViewController
+        if let selectedReviewCell = sender as? UITableViewCell {
+            let indexPath = tableView.indexPathForCell(selectedReviewCell)!
+            
+            var series: Series
+            if self.searchController.searchBar.text != "" {
+                series = filtered[indexPath.row]
+            } else {
+                series = seriesList[indexPath.row]
+            }
+            reviewTableViewController.seriesId = series.seriesId
+        }
+
+        
     }
-    */
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         var searchText = searchController.searchBar.text

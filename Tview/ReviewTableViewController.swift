@@ -13,7 +13,8 @@ import Parse
 class ReviewTableViewController: UITableViewController {
 
     var reviews = [Review]()
-    var review = Review?()
+    
+    var seriesId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class ReviewTableViewController: UITableViewController {
 //        navigationItem.leftBarButtonItem = editButtonItem()
         
         let query = PFQuery(className: "Review")
+        query.whereKey("seriesId", equalTo: seriesId!)
 //        query.limit = 20
 
         query.findObjectsInBackgroundWithBlock {
@@ -35,7 +37,7 @@ class ReviewTableViewController: UITableViewController {
             if error == nil {
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-                        let r = Review(objectId: object["objectId"] as! String, comment: object["comment"] as! String, author: object["author"] as! String)!
+                        let r = Review(seriesId: self.seriesId!, objectId: object.objectId!, comment: object["comment"] as! String, author: object["author"] as! String)!
                         self.reviews.append(r)
                     }
                     
@@ -129,16 +131,22 @@ class ReviewTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
         if segue.identifier == "ShowDetail" {
             let reviewViewController = segue.destinationViewController as! ReviewViewController
             if let selectedReviewCell = sender as? UITableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedReviewCell)!
                 let selectedReview = reviews[indexPath.row]
                 reviewViewController.review = selectedReview
+                reviewViewController.seriesId = self.seriesId
             }
         } else if segue.identifier == "AddItem" {
             println("Adding new review")
+            let navVC = segue.destinationViewController as! UINavigationController
+            let reviewViewController = navVC.viewControllers.first as! ReviewViewController
+            reviewViewController.seriesId = self.seriesId
         }
+        
     }
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
