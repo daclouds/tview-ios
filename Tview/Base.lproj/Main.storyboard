@@ -49,11 +49,35 @@
                             <constraint firstItem="WRR-6J-AMx" firstAttribute="centerY" secondItem="k3a-GW-vH7" secondAttribute="centerY" id="fOg-Vo-aeL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="cO5-Eq-dEe"/>
+                    <navigationItem key="navigationItem" id="cO5-Eq-dEe">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="mDY-4O-bMI">
+                            <connections>
+                                <segue destination="cOV-iW-qiu" kind="show" id="Abc-cc-Sd7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1117" y="377"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="02a-rd-pLm">
+            <objects>
+                <viewController id="cOV-iW-qiu" customClass="LoginViewController" customModule="Tview" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k7T-JQ-qhR"/>
+                        <viewControllerLayoutGuide type="bottom" id="bkb-Jq-WiT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EMC-Tq-xQ5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jig-BV-FXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1891" y="377"/>
         </scene>
         <!--Rank Table View Controller-->
         <scene sceneID="JUr-qv-Tkx">

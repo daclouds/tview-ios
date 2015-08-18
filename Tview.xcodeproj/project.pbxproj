@@ -32,6 +32,10 @@
 		EDA3246C1B79DA860045CCA7 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3246B1B79DA860045CCA7 /* ReviewTableViewController.swift */; };
 		EDA3246E1B79DAD80045CCA7 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3246D1B79DAD80045CCA7 /* Review.swift */; };
 		EDC529191B5411AE0087866C /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDC529181B5411AE0087866C /* keys.plist */; };
+		EDF81A881B832FBF00F94AAA /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF81A851B832FBF00F94AAA /* TwitterKit.framework */; };
+		EDF81A891B832FBF00F94AAA /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EDF81A861B832FBF00F94AAA /* TwitterKitResources.bundle */; };
+		EDF81A8A1B832FBF00F94AAA /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF81A871B832FBF00F94AAA /* TwitterCore.framework */; };
+		EDF81A8C1B83309000F94AAA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF81A8B1B83309000F94AAA /* LoginViewController.swift */; };
 		EDFAE1331B58C56A00D5D0AC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDFAE1311B58C56A00D5D0AC /* Fabric.framework */; };
 		EDFAE1341B58C56A00D5D0AC /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDFAE1321B58C56A00D5D0AC /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +68,10 @@
 		EDA3246B1B79DA860045CCA7 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		EDA3246D1B79DAD80045CCA7 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		EDC529181B5411AE0087866C /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = keys.plist; path = ../keys.plist; sourceTree = "<group>"; };
+		EDF81A851B832FBF00F94AAA /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		EDF81A861B832FBF00F94AAA /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		EDF81A871B832FBF00F94AAA /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		EDF81A8B1B83309000F94AAA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EDFAE1311B58C56A00D5D0AC /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		EDFAE1321B58C56A00D5D0AC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +92,9 @@
 				ED5E69FC1B784F7D006180A5 /* CFNetwork.framework in Frameworks */,
 				ED5E69FA1B784F73006180A5 /* AudioToolbox.framework in Frameworks */,
 				EDFAE1341B58C56A00D5D0AC /* Crashlytics.framework in Frameworks */,
+				EDF81A881B832FBF00F94AAA /* TwitterKit.framework in Frameworks */,
 				ED5E69F61B784EC0006180A5 /* Parse.framework in Frameworks */,
+				EDF81A8A1B832FBF00F94AAA /* TwitterCore.framework in Frameworks */,
 				EDFAE1331B58C56A00D5D0AC /* Fabric.framework in Frameworks */,
 				ED5E69F81B784EF6006180A5 /* Bolts.framework in Frameworks */,
 			);
@@ -98,6 +108,9 @@
 			children = (
 				ED5E6A0B1B784FDF006180A5 /* libsqlite3.dylib */,
 				ED5E6A091B784FD1006180A5 /* libz.dylib */,
+				EDF81A851B832FBF00F94AAA /* TwitterKit.framework */,
+				EDF81A861B832FBF00F94AAA /* TwitterKitResources.bundle */,
+				EDF81A871B832FBF00F94AAA /* TwitterCore.framework */,
 				ED5E6A071B784FC7006180A5 /* SystemConfiguration.framework */,
 				ED5E6A051B784FB3006180A5 /* StoreKit.framework */,
 				ED5E6A031B784FAB006180A5 /* Security.framework */,
@@ -140,6 +153,7 @@
 				ED5E6A0D1B78509C006180A5 /* ReviewViewController.swift */,
 				EDA3246B1B79DA860045CCA7 /* ReviewTableViewController.swift */,
 				EDA3246D1B79DAD80045CCA7 /* Review.swift */,
+				EDF81A8B1B83309000F94AAA /* LoginViewController.swift */,
 			);
 			path = Tview;
 			sourceTree = "<group>";
@@ -207,6 +221,7 @@
 				EDC529191B5411AE0087866C /* keys.plist in Resources */,
 				ED9E716E1B579CCE000D9A4D /* Launch Screen.xib in Resources */,
 				ED69092D1B4691330077E947 /* Assets.xcassets in Resources */,
+				EDF81A891B832FBF00F94AAA /* TwitterKitResources.bundle in Resources */,
 				ED69092B1B4691330077E947 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDF81A8C1B83309000F94AAA /* LoginViewController.swift in Sources */,
 				ED38CC3B1B53F38A00F1A224 /* RankTableViewController.swift in Sources */,
 				EDA3246E1B79DAD80045CCA7 /* Review.swift in Sources */,
 				ED6909281B4691330077E947 /* ViewController.swift in Sources */,
