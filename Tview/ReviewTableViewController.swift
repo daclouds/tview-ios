@@ -26,16 +26,19 @@ class ReviewTableViewController: UITableViewController {
 //         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
 //        navigationItem.leftBarButtonItem = editButtonItem()
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         let query = PFQuery(className: "Review")
         query.whereKey("seriesId", equalTo: seriesId!)
-//        query.limit = 20
-
+        //        query.limit = 20
+        
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             
             if error == nil {
                 if let objects = objects as? [PFObject] {
+                    self.reviews = [Review]()
                     for object in objects {
                         let r = Review(seriesId: self.seriesId!, objectId: object.objectId!, comment: object["comment"] as! String, author: object["author"] as! String)!
                         self.reviews.append(r)
@@ -50,7 +53,7 @@ class ReviewTableViewController: UITableViewController {
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -149,7 +152,7 @@ class ReviewTableViewController: UITableViewController {
         
     }
     
-    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+    @IBAction func unwindToList(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.sourceViewController as? ReviewViewController, review = sourceViewController.review {
             

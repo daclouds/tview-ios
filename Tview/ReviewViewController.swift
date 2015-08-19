@@ -40,28 +40,45 @@ class ReviewViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if saveButton === sender {
-            save(sender as! UIBarButtonItem)
+//            save(sender as! UIBarButtonItem)
             
+            let _review = PFObject(className: "Review")
+            _review["seriesId"] = seriesId
+            _review["comment"] = comment.text
+            _review["author"] = "anonymous"
+            _review.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                var alert: UIAlertView
+                if (success) {
+                    let message = "Object has been saved."
+                    self.review = Review(seriesId: self.seriesId!, objectId: _review.objectId!, comment: self.comment.text, author: "anonymous")
+                    alert = UIAlertView(title: "Success", message: message, delegate: self, cancelButtonTitle: "Close")
+                } else {
+                    alert = UIAlertView(title: "Error", message: error?.description, delegate: self, cancelButtonTitle: "Close")
+                }
+                alert.show()
+            })
+            
+//            self.review = Review(seriesId: self.seriesId!, objectId: "", comment: self.comment.text, author: "anonymous")
         }
     }
     
     @IBAction func save(sender: UIBarButtonItem) {
-        let _review = PFObject(className: "Review")
-        _review["seriesId"] = seriesId
-        _review["comment"] = comment.text
-        _review["author"] = "anonymous"
-        _review.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-            var alert: UIAlertView
-            if (success) {
-                let message = "Object has been saved."
-                self.review = Review(seriesId: self.seriesId!, objectId: _review.objectId!, comment: self.comment.text, author: "anonymous")
-                alert = UIAlertView(title: "Success", message: message, delegate: self, cancelButtonTitle: "Close")
-            } else {
-                alert = UIAlertView(title: "Error", message: error?.description, delegate: self, cancelButtonTitle: "Close")
-            }
-            alert.show()
-        })
-        
+//        let _review = PFObject(className: "Review")
+//        _review["seriesId"] = seriesId
+//        _review["comment"] = comment.text
+//        _review["author"] = "anonymous"
+//        _review.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+//            var alert: UIAlertView
+//            if (success) {
+//                let message = "Object has been saved."
+//                self.review = Review(seriesId: self.seriesId!, objectId: _review.objectId!, comment: self.comment.text, author: "anonymous")
+//                alert = UIAlertView(title: "Success", message: message, delegate: self, cancelButtonTitle: "Close")
+//            } else {
+//                alert = UIAlertView(title: "Error", message: error?.description, delegate: self, cancelButtonTitle: "Close")
+//            }
+//            alert.show()
+//        })
+        println("save")
         
     }
     

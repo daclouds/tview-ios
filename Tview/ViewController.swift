@@ -15,20 +15,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        Twitter.sharedInstance().logInWithCompletion { session, error in
-            Twitter.sharedInstance().APIClient.loadUserWithID(session.userID) { (user, error) -> Void in
-                if (user != nil) {
-                    var profileImg: UIImage?
-                    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                        profileImg =  UIImage(data: NSData(contentsOfURL: NSURL(string:user!.profileImageURL)!)!)!
-                        println(user?.profileImageURL)
-                    })
-                    self.navigationItem.setRightBarButtonItem(UIBarButtonItem(image: profileImg, style: UIBarButtonItemStyle.Plain, target: self, action: ""), animated: false)
-                    println(session.userName)
+        let instance = Twitter.sharedInstance()
+        if (instance.session() != nil) {
+            instance.logInWithCompletion { session, error in
+                instance.APIClient.loadUserWithID(session.userID) { (user, error) -> Void in
+                    if (user != nil) {
+                        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                            println(user?.profileImageURL)
+                            let img = UIImage(data: NSData(contentsOfURL: NSURL(string:user!.profileImageURL)!)!)!
+                            let rightBarButtonItem = UIBarButtonItem(
+                                image: img.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), style: UIBarButtonItemStyle.Plain, target: self, action: nil)
+                            self.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
+                        })
+                    }
                 }
             }
         }
-        
     }
 
     override func didReceiveMemoryWarning() {

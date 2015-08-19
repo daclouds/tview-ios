@@ -302,14 +302,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Vw-Ny-GxV">
-                                <rect key="frame" x="0.0" y="64" width="600" height="444"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vw-Ny-GxV">
+                                <rect key="frame" x="0.0" y="64" width="600" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="448" id="6Jv-PV-jv1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="5XE-pU-5wr">
-                                <rect key="frame" x="224" y="516" width="153" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="5XE-pU-5wr">
+                                <rect key="frame" x="224" y="520" width="153" height="29"/>
                                 <segments>
                                     <segment title="-1"/>
                                     <segment title="0"/>
@@ -319,9 +322,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3Vw-Ny-GxV" firstAttribute="leading" secondItem="jqb-UX-uPH" secondAttribute="leadingMargin" constant="-16" id="KyL-Uu-wp5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3Vw-Ny-GxV" secondAttribute="trailing" constant="-16" id="Lr1-np-3Lb"/>
-                            <constraint firstItem="3Vw-Ny-GxV" firstAttribute="top" secondItem="Ux9-eM-XzJ" secondAttribute="bottom" id="u83-FN-A5O"/>
+                            <constraint firstItem="3Vw-Ny-GxV" firstAttribute="top" secondItem="Ux9-eM-XzJ" secondAttribute="bottom" id="1sW-ZS-4pU"/>
+                            <constraint firstItem="3Vw-Ny-GxV" firstAttribute="centerX" secondItem="5XE-pU-5wr" secondAttribute="centerX" id="D2d-BA-n6t"/>
+                            <constraint firstItem="5XE-pU-5wr" firstAttribute="top" secondItem="3Vw-Ny-GxV" secondAttribute="bottom" constant="8" symbolic="YES" id="IcI-DQ-puk"/>
+                            <constraint firstAttribute="trailing" secondItem="3Vw-Ny-GxV" secondAttribute="trailing" id="fbc-Mz-A8E"/>
+                            <constraint firstItem="3Vw-Ny-GxV" firstAttribute="leading" secondItem="jqb-UX-uPH" secondAttribute="leading" id="sWO-ES-6KU"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -334,7 +339,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="vfJ-h7-v7j">
                             <connections>
                                 <action selector="save:" destination="YfO-ND-pSE" id="MwK-Iy-Cus"/>
-                                <segue destination="XPM-fw-hcb" kind="unwind" unwindAction="unwindToMealList:" id="iwm-Ym-PHp"/>
+                                <segue destination="XPM-fw-hcb" kind="unwind" unwindAction="unwindToList:" id="E8K-vF-GXT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -368,6 +373,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="B04-cf-azG"/>
+        <segue reference="xVS-UE-J3Y"/>
     </inferredMetricsTieBreakers>
 </document>
