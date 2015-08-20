@@ -128,6 +128,18 @@ class RankTableViewController: UITableViewController, UISearchControllerDelegate
         return true
     }
     */
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if isLandscapeOrientation() {
+            return 132.0
+        } else {
+            return 176.0
+        }
+    }
+    
+    func isLandscapeOrientation() -> Bool {
+        return UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
+    }
     
     func searchSeries() {
         
